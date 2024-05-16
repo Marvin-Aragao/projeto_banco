@@ -4,19 +4,31 @@
 """
 
 #O programa deve exibir um menu para o usuário escolher a operação que deseja realizar e, em seguida, executar a operação escolhida.
-opcao = int(input("Escolha uma opçao"))
-if opcao == 1:
-    def criar_conta()
-elif opcao == 2:
-    def verificar_saldo()
-elif opcao == 3:
-    def depositar_dinheiro()
-elif opcao == 4:
-    def sacar_dinheiro()
-elif opcao == 5:
-    def encerrrar_atendimento()
-else:
-    def encerrar_atendimento()
+def inicio():
+    print("Bem vindo ao GNB!/n")
+    print("")
+    print("Escolha uma opção abaixo:/n")
+    print("1 - Criar Conta")
+    print("2 - Cerificar Saldo")
+    print("3 - Depositar Dinheiro")
+    print("4 - Sacar Dinheiro")
+    print("5 - Sair")
+    OPCAO = int(input("Escolha uma opçao: "))
+
+#opcao = int(input("Escolha uma opçao: "))
+def opcao_escolhida(OPCAO):
+    if OPCAO == 1:
+        def criar_conta()
+    elif OPCAO == 2:
+        def verificar_saldo()
+    elif OPCAO == 3:
+        def depositar_dinheiro()
+    elif OPCAO == 4:
+        def sacar_dinheiro()
+    elif OPCAO == 5:
+        def encerrrar_atendimento()
+    else:
+        def encerrar_atendimento()
         
 
 #Ao depositar dinheiro, o programa deve atualizar o saldo da conta bancária adicionando o valor depositado ao saldo atual.
