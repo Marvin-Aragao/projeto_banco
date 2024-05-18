@@ -1,5 +1,5 @@
 import os
-
+saldo = 0
 def inicio():
     os.system("cls")
     print()
@@ -22,33 +22,6 @@ def voltar_inicio():
         print("insira uma opção valida\n")
         voltar_inicio() 
 
-#Ao depositar dinheiro, o programa deve atualizar o saldo da conta bancária adicionando o valor depositado ao saldo atual.
-saldo = 0
-
-def depositar_dinheiro():
-    os.system("cls")
-    print("     Area de Deposito\n\n")
-    deposito = float(input("Digite a quantia que deseja depositar: "))
-    saldo += deposito
-    print(f"Deposito no valor de {deposito}\n")
-    voltar_inicio()
-
-"""Ao sacar dinheiro, o programa deve verificar se o valor a ser sacado é menor ou igual ao saldo atual da conta bancária e, em caso afirmativo, atualizar o saldo da conta bancária subtraindo o valor sacado do saldo atual.
-Se o valor a ser sacado for maior que o saldo atual da conta bancária, o programa deve exibir uma mensagem informando que não há saldo suficiente na conta bancária para realizar a operação."""
-
-def sacar_dinheiro():
-    os.system("cls")
-    print("     Area de Saque\n\n")
-    saque = float(input("Digite o valor que deseja sacar: "))
-    if saldo >= saque:
-        saldo -= saque
-        print(f"O saque no valor de {saque} foi realizado com sucesso.")
-    else:
-        print("Saldo insuficiemte para este saque")
-    voltar_inicio()
-
-#O programa deve armazenar as informações da conta bancária do usuário em um dicionário.
-#Criar conta 
 usuarios = []
 
 def criar_conta():
@@ -64,13 +37,36 @@ def criar_conta():
     print("Sua conta foi Criada com sucesso!\n\nVolte para o menu para realizar outras ações")
     voltar_inicio()
 
-# def add_usuario():
-#     usuarios.append()
-
 def verificar_saldo():
     os.system("cls")
     print("     Saldo\n")
-    print(f"Seu saldo é de R${saldo},00")
+    print("Seu saldo é de R$", usuarios[0][saldo])#consertar
+    voltar_inicio()
+
+
+#Ao depositar dinheiro, o programa deve atualizar o saldo da conta bancária adicionando o valor depositado ao saldo atual.
+
+def depositar_dinheiro():
+    os.system("cls")
+    print("     Area de Deposito\n\n")
+    deposito = int(input("Digite a quantia que deseja depositar: "))#com o float, o valor fica com um ponto e zero(.0) indesejavel
+    usuarios[0]["saldo"] += deposito#otimizar  a utilizaçao do indice
+    print()
+    print("Deposito no valor de", deposito)
+    voltar_inicio()
+
+"""Ao sacar dinheiro, o programa deve verificar se o valor a ser sacado é menor ou igual ao saldo atual da conta bancária e, em caso afirmativo, atualizar o saldo da conta bancária subtraindo o valor sacado do saldo atual.
+Se o valor a ser sacado for maior que o saldo atual da conta bancária, o programa deve exibir uma mensagem informando que não há saldo suficiente na conta bancária para realizar a operação."""
+
+def sacar_dinheiro():
+    os.system("cls")
+    print("     Area de Saque\n\n")
+    saque = float(input("Digite o valor que deseja sacar: "))
+    if saldo >= saque:
+        saldo -= saque
+        print(f"O saque no valor de {saque} foi realizado com sucesso.")
+    else:
+        print("Saldo insuficiemte para este saque")
     voltar_inicio()
 
 def encerrar_atendimento():
