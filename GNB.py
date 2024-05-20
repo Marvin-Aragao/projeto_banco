@@ -6,10 +6,11 @@ def inicio():
     print("Bem vindo ao GNB!\n")
     print("Opções\n")
     print("1 - Criar Conta")
-    print("2 - Verificar Saldo")
-    print("3 - Depositar Dinheiro")
-    print("4 - Sacar Dinheiro")
-    print("5 - Sair\n")
+    print("2 - Login")
+    print("3 - Verificar Saldo")
+    print("4 - Depositar Dinheiro")
+    print("5 - Sacar Dinheiro")
+    print("6 - Sair\n")
 
 def voltar_inicio():
     print()
@@ -28,7 +29,7 @@ def criar_conta():
     os.system("cls")
     print("     Criação de Conta\n\n")
     nome = input("Digite seu nome: ")
-    senha = input("Crie uma senha: ")
+    senha = int(input("Crie uma senha: "))
     numero_conta = int(input("Digite o numero da sua conta: "))
     dinheiro = 0
     dados_conta = {"usuario": nome, "senha": senha, "numero da conta": numero_conta, "saldo": dinheiro}
@@ -36,6 +37,27 @@ def criar_conta():
     print()
     print("Sua conta foi Criada com sucesso!\n\nVolte para o menu para realizar outras ações")
     voltar_inicio()
+
+def verifica_usuario():
+    login = input("Digite seu Usuario: ")
+    if usuarios[0]["usuario"] == login:
+        return True
+    else:
+        return False
+
+def verifica_senha():
+    senha = int(input("Digite sua senha: "))
+    if usuarios[0]["senha"] == senha:
+        return True
+    else:
+        return False
+
+def acessar_conta():
+    if verifica_usuario() == True and verifica_senha() == True:
+        return usuarios[0]["numero da contas"]
+    else:
+        return False
+
 
 def verificar_saldo():
     os.system("cls")
@@ -78,12 +100,14 @@ def opcao_escolhida():
     if opcao == 1:
         criar_conta()
     elif opcao == 2:
-        verificar_saldo()
+        acessar_conta()
     elif opcao == 3:
-        depositar_dinheiro()
+        verificar_saldo()
     elif opcao == 4:
-        sacar_dinheiro()
+        depositar_dinheiro()
     elif opcao == 5:
+        sacar_dinheiro()
+    elif opcao == 6:
         encerrar_atendimento()
     else:
         encerrar_atendimento()
