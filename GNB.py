@@ -1,5 +1,5 @@
 import os
-saldo = 0
+
 def inicio():
     os.system("cls")
     print()
@@ -40,33 +40,42 @@ def criar_conta():
 
 def verifica_usuario():
     login = input("Digite seu Usuario: ")
-    if usuarios[0]["usuario"] == login:
-        return True
-    else:
-        return False
+    for usuario in usuarios:
+        if usuario["usuario"] == login:
+            return True
+        else:
+            return False
 
 def verifica_senha():
     senha = int(input("Digite sua senha: "))
-    if usuarios[0]["senha"] == senha:
-        return True
+    for usuario in usuarios:
+        if usuario["senha"] == senha:
+         return True
+        else:
+            return False
+
+def tente_novamente():
+    print()
+    tentativa = int(input("Usuario ou senha invalido.\n Digite 1 para tentar novamente ou 2 para voltar ao menu principal: "))
+    if tentativa == 1:
+        print()
+        acessar_conta()
+    elif tentativa == 2:
+        main()
     else:
-        return False
+        print("Digite uma opção valida\n")
+        tente_novamente()
 
 def acessar_conta():
     if verifica_usuario() == True and verifica_senha() == True:
-        return usuarios[0]["numero da contas"]
+        print(f"Bem vindo(a)")#falta mt
     else:
-        return False
-
-
+        tente_novamente()
 def verificar_saldo():
     os.system("cls")
     print("     Saldo\n")
     print("Seu saldo é de R$", usuarios[0]["saldo"],",00")
     voltar_inicio()
-
-
-#Ao depositar dinheiro, o programa deve atualizar o saldo da conta bancária adicionando o valor depositado ao saldo atual.
 
 def depositar_dinheiro():
     os.system("cls")
@@ -76,9 +85,6 @@ def depositar_dinheiro():
     print()
     print("Deposito no valor de", deposito,",00")
     voltar_inicio()
-
-"""Ao sacar dinheiro, o programa deve verificar se o valor a ser sacado é menor ou igual ao saldo atual da conta bancária e, em caso afirmativo, atualizar o saldo da conta bancária subtraindo o valor sacado do saldo atual.
-Se o valor a ser sacado for maior que o saldo atual da conta bancária, o programa deve exibir uma mensagem informando que não há saldo suficiente na conta bancária para realizar a operação."""
 
 def sacar_dinheiro():
     os.system("cls")

@@ -1,2 +1,2 @@
 # projeto_banco
-Programa simples caixa banco
+Programa simples funcionamento banco
