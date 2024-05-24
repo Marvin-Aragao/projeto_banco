@@ -68,7 +68,8 @@ def tente_novamente():
 
 def acessar_conta():
     if verifica_usuario() == True and verifica_senha() == True:
-        print(f"Bem vindo(a)")#falta mt
+        print("Bem vindo(a)", )
+        return True
     else:
         tente_novamente()
 def verificar_saldo():
@@ -81,7 +82,9 @@ def depositar_dinheiro():
     os.system("cls")
     print("     Area de Deposito\n\n")
     deposito = int(input("Digite a quantia que deseja depositar: "))#com o float, o valor fica com um ponto e zero(.0) indesejavel
-    usuarios[0]["saldo"] += deposito#otimizar  a utilizaçao do indice
+    for usuario in usuarios:
+        if acessar_conta() == True:#and usuario["conta"] == numero_conta:
+            usuarios[0]["saldo"] += deposito#if ["senha"] in usuarios:def \\ otimizar  a utilizaçao do indice
     print()
     print("Deposito no valor de", deposito,",00")
     voltar_inicio()
