@@ -73,32 +73,42 @@ def acessar_conta():
     else:
         tente_novamente()
 def verificar_saldo():
-    os.system("cls")
-    print("     Saldo\n")
-    print("Seu saldo é de R$", usuarios[0]["saldo"],",00")
-    voltar_inicio()
+    if acessar_conta() == True:
+        os.system("cls")
+        print("     Saldo\n")
+        print("Seu saldo é de R$", usuarios[0]["saldo"],",00")
+        voltar_inicio()
+    else:
+        print("Conta não encontrada")
+        main()
 
 def depositar_dinheiro():
-    os.system("cls")
-    print("     Area de Deposito\n\n")
-    deposito = int(input("Digite a quantia que deseja depositar: "))#com o float, o valor fica com um ponto e zero(.0) indesejavel
-    for usuario in usuarios:
-        if acessar_conta() == True:#and usuario["conta"] == numero_conta:
-            usuarios[0]["saldo"] += deposito#if ["senha"] in usuarios:def \\ otimizar  a utilizaçao do indice
-    print()
-    print("Deposito no valor de", deposito,",00")
-    voltar_inicio()
+    if acessar_conta() == True:
+        os.system("cls")
+        print("     Area de Deposito\n\n")
+        deposito = int(input("Digite a quantia que deseja depositar: "))#com o float, o valor fica com um ponto e zero(.0) indesejavel
+        for usuario in usuarios:
+            if acessar_conta() == True:#and usuario["conta"] == numero_conta:
+                usuarios[0]["saldo"] += deposito#if ["senha"] in usuarios:def \\ otimizar  a utilizaçao do indice
+        print()
+        print("Deposito no valor de", deposito,",00")
+        voltar_inicio()
+    else:
+        main()
 
 def sacar_dinheiro():
-    os.system("cls")
-    print("     Area de Saque\n\n")
-    saque = int(input("Digite o valor que deseja sacar: "))
-    if usuarios[0]["saldo"] >= saque:
-        usuarios[0]["saldo"] -= saque
-        print(f"O saque no valor de {saque},00 foi realizado com sucesso.")
+    if acessar_conta() == True:
+        os.system("cls")
+        print("     Area de Saque\n\n")
+        saque = int(input("Digite o valor que deseja sacar: "))
+        if usuarios[0]["saldo"] >= saque:
+            usuarios[0]["saldo"] -= saque
+            print(f"O saque no valor de {saque},00 foi realizado com sucesso.")
+        else:
+            print("Saldo insuficiemte para este saque")
+        voltar_inicio()
     else:
-        print("Saldo insuficiemte para este saque")
-    voltar_inicio()
+        main()
 
 def encerrar_atendimento():
     os.system("cls")
